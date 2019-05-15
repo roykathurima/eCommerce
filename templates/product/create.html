@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST'> {% csrf_token %}
+<!--The as_p builtin method turns the form that 
+we are passing into the template an actual html form-->
+{{ form.as_p }}
+<input type='submit' value='save'/>
+</form>
+{% endblock content %}  
