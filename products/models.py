@@ -36,7 +36,7 @@ class Product(models.Model):
     description = models.TextField(blank=True, null=True)
     price       = models.DecimalField(max_digits=10, decimal_places=2)
     featured    = models.BooleanField(default=False)
-    image       = models.FileField(null=True, blank=True, upload_to=upload_image_path)
+    image       = models.ImageField(null=True, blank=True, upload_to=upload_image_path)
 
     objects = ProductManager()
 

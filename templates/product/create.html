@@ -3,10 +3,10 @@
 {% block content %}
 <div class="container">
 	<div class="row">
-		<div class="col-md-6 mt-3">
-			<form method='POST'> {% csrf_token %}
+		<div class="col-md-6 theme mt-3">
+			<form  class="pt-3" method='POST'> {% csrf_token %}
 			{{ form.as_p }}
-				<input class="btn btn-info" type='submit' value='save'/>
+				<input class="btn mb-3 btn-info" type='submit' value='save'/>
 			</form>
 		</div>
 	</div>

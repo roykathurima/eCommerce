@@ -23,6 +23,9 @@ from pages.views import home_view, about_view
 from cart.views import cart_home, cart_update
 from products.views import product_create_view, product_list_view, product_s_detail_view #product_detail_view
 from authentication.views import login_page, register_page, log_out
+from checkout.views import call_back, stk_push
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', login_page, name='log_in'),
@@ -34,6 +37,8 @@ urlpatterns = [
     path('products/', product_list_view, name='product-list'),
     path('logout/', log_out),
     path('cart/', cart_home),
+    path('call/', call_back),
+    path('checkout/', stk_push, name='check'),
     path('search/', search_results, name='search-results'),
     path('update/', cart_update, name='update'),
     path('register/', register_page),

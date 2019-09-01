@@ -41,14 +41,15 @@
 					{% endif %}
 				</div> </li>
 		</ul>
-		<div class="nav-item navbar-nav" >
-			<a class="nav-link" href="/register">Register</a>
-		</div>
+		
 		{% if request.user.is_authenticated %}
 			<div class="nav-item navbar-nav pr-2">
 				<a class="nav-link" href="/logout">Log Out</a>
 			</div>
 		{% else %}
+			<div class="nav-item navbar-nav" >
+				<a class="nav-link" href="/register">Register</a>
+			</div>
 			<div class="nav-item navbar-nav pr-2">
 				<a class="nav-link" href="/login">Log In</a>
 			</div>

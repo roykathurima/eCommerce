@@ -1,11 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="container">
-	<h2><b>Product Details</b></h2>
-	<hr>
+<div class="container-fluid">
 	<div class="row">
-		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+		<div class="col-lg-3 col-md-3 mt-2 theme col-sm-3 col-xs-3">
+				<h2 class="pt-2"><b>Product Details</b></h2>
+	<hr>		
 			<div class="thumbnail">
 				{% if object.image %}
 				<img class="img img-fluid" src="{{object.image.url}}" alt="dis nuts">
@@ -17,9 +17,9 @@
 					<form method="POST" action='{% url "update" %}'> {% csrf_token %}
 						<input type="hidden" name="product_id" value="{{ object.id }}">
 					{% if object in cart.products.all %}
-						<button class="btn btn-danger" type="submit">Remove?</button>
+						<button class="btn mb-3 btn-danger" type="submit">Remove?</button>
 					{% else %}
-						<button class="btn btn-info" type="submit">Add to cart</button> 
+						<button class="btn mb-3 btn-info" type="submit">Add to cart</button> 
 					{% endif %}
 					</form>
 				</div>

@@ -3,10 +3,10 @@
 {% block content %}
 
 <div class="container-fluid mt-3">
-	<h2><b>Cart</b></h2>
 	<div class="row">
-		<div class="col-md-6 mt-3">
-			<div class="table-responsive"> 
+		<div class="col-md-6 theme mt-3">
+			<h2 class="pt-2 pb-2"><b>Cart</b></h2>
+			<div class="table-responsive theme"> 
 			   <table class="table table-hover"> 
 			   <!--	<caption><button class="btn btn-info" type="submit" href="">CheckOut</button></caption> -->
 			      <thead> 
@@ -31,8 +31,12 @@
 			         </tr> 
 			      </tbody> 
 			   </table>
-			   <div class="col-md-5 ml-auto"><button class="btn btn-info" type="submit" href="/checkout">
-			   CheckOut</button></div> 
+			   <div class="col-md-5 ml-auto">
+	   			<form method="GET" action="{% url 'check' %}">
+	   				<input type="hidden" name="at" value="{{ cart.total }}">
+					<button class="btn btn-info mb-3" type=​"submit"​>​CheckOut</button>
+				</form>
+<!-- 			   	<a class="btn btn-info" type="submit" href="{% url 'check' %}">CheckOut</a></div>  -->
 		</div>
 	</div>
 </div>
