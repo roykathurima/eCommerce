@@ -107,3 +107,4 @@ venv.bak/
 #Roy additions
 requirements.sublime-workspace
 .vscode
+requirements.txt
