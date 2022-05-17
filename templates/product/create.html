@@ -1,10 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<form method='POST'> {% csrf_token %}
-<!--The as_p builtin method turns the form that 
-we are passing into the template an actual html form-->
-{{ form.as_p }}
-<input type='submit' value='save'/>
-</form>
-{% endblock content %}  
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 theme mt-3">
+			<form  class="pt-3" method='POST'> {% csrf_token %}
+			{{ form.as_p }}
+				<input class="btn mb-3 btn-info" type='submit' value='save'/>
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock content %}
+
+
+
+<!-- <div class="container">
+	<div class="row">
+		<div class="col-md-6 mt-3">
+			<form method='POST'> {% csrf_token %}
+			{{ form }}
+			<div class="mr-auto">
+				<input class="btn btn-info" type='submit' value='save'/>
+			</div>
+			</form>
+		</div>
+	</div>
+</div>   -->

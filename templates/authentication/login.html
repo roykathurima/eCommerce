@@ -1,0 +1,21 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container-fluid">
+	<br>
+	{% if not cred and data %}
+		<h4 class="text-danger text-lg">Enter the correct credentials to login!</h4>
+	{% endif %}
+	<div class="row">
+		<div class="col-md-4 theme">
+			<form  class="pt-3" method='POST'> {% csrf_token %}
+			<!--The as_p builtin method turns the form that 
+			we are passing into the template an actual html form-->
+			{{ form.as_p }}
+			<input class='btn btn-info mb-3' type='submit' value='Submit'/>
+		</div>
+	</div>
+</div>
+</form>
+{% endblock content %}

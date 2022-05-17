@@ -1,5 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Home Page</h1>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 theme mt-2 text-center">
+			<h2 class="py-3"><b><span> Home Page </span></b></h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			{% include 'carousel.html' %}
+		</div>
+	</div>
+</div>
+
 {% endblock content %}

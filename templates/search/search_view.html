@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 theme py-2 my-2">
+			{% if count is not 0 %}
+			<p>You searched for <b>{{query}}</b></p>
+			 <ul class="list-group">
+			 	{% for item in object %}
+			 	<li class="list-group-item">
+			    <a href = "{{item.get_absolute_url}}" >{{ item.title }} </a> <br>
+			    {{ item.price }}
+			    <br>
+			    {{ item.description }} <br>
+				</li>
+				{% endfor %}
+				{% elif count is 0 %}
+				<p>There were no results for <b>{{query}}</b></p>
+				{% endif %}
+
+			 </ul>
+		</div>
+
+	</div>
+</div>
+
+
+ {% endblock %}

@@ -25,7 +25,10 @@ SECRET_KEY = '4nt8$g*y92w3-s-x+a^v$=k2uos0a##7w=qg^$l9uzt4f#d3b7'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'localhost',
+    '66f07a47.ngrok.io',
+]
 
 
 # Application definition
@@ -42,6 +45,9 @@ INSTALLED_APPS = [
     'products',
     'pages',
     'cart',
+    'authentication',
+    'search',
+    'checkout',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +129,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static_local')
+]
+
+
+STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn', 'static_root')
+
+MEDIA_URL = '/media/'
+STATIC_MEDIA = os.path.join(os.path.dirname(BASE_DIR), 'static_cdn', 'media_root')
+
+# Use this when using the default auth app after including its urls in the urls.py file
+# LOGOUT_REDIRECT_URL = 'log_in'

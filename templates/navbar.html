@@ -1,7 +1,63 @@
-<nav>
+<!-- <nav class="nav navbar-inverse">
 <ul>
     <li><a href="/">Home page</a></li>
     <li><a href="/products">Products</a></li>
     <li><a href="/about">About Page</a></li>
 </ul>
+</nav>
+ -->
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="/">Online Shopping</a>
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target=​"#navbarSupportedContent" aria-controls=​"navbarSupportedContent" aria-expanded="false" aria-label="Toggle Navigation">
+		<span class=​"navbar-toggler-icon"​></span>
+	</button>
+	<div class="navbar-collapse navbar-collapse" id=​"navbarSupportedContent"​>
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="/">Home<span class=​"sr-only"​>​</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/products">Products<span class=​"sr-only"​>​</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/cart">Cart</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="/about">About Us</a>
+			</li>
+			<li class="nav-item dropdown">
+				{% if request.user.is_staff %}
+					<a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Staff </a>
+				{% else %}
+					<a class="nav-link dropdown-toggle disabled" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Staff </a>
+				{% endif %}
+				<div class="dropdown-menu" aria-labelledby=​"navbarDropdown"​>
+					<a class="dropdown-item" href="/create">Create Product</a>
+					{% if request.user.is_superuser %}
+						<div class=​"dropdown-divider"​>
+							<a class="dropdown-item" href="/admin">Admin</a> 
+						</div>
+					{% endif %}
+				</div> </li>
+		</ul>
+		
+		{% if request.user.is_authenticated %}
+			<div class="nav-item navbar-nav pr-2">
+				<a class="nav-link" href="/logout">Log Out</a>
+			</div>
+		{% else %}
+			<div class="nav-item navbar-nav" >
+				<a class="nav-link" href="/register">Register</a>
+			</div>
+			<div class="nav-item navbar-nav pr-2">
+				<a class="nav-link" href="/login">Log In</a>
+			</div>
+		{% endif %}
+
+		<form method="GET" action="{% url 'search-results' %}" class="form-inline my-2 my-lg-0">
+			<input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-info my-2 my-sm-0" type=​"submit"​>​Search​</button>
+		</form>
+	</div>
 </nav>

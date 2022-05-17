@@ -13,15 +13,38 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
+from django.conf import settings
+from django.conf.urls.static import static
+
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from search.views import search_results
 from pages.views import home_view, about_view
-from products.views import product_detail_view, product_create_view, product_list_view
+from cart.views import cart_home, cart_update
+from products.views import product_create_view, product_list_view, product_s_detail_view #product_detail_view
+from authentication.views import login_page, register_page, log_out
+from checkout.views import call_back, stk_push
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('login/', login_page, name='log_in'),
+    # path('accounts', include('django.contrib.auth.urls')),
     path('', home_view, name='home'),
-    path('detail/<int:id>/', product_detail_view),
-    path('create/', product_create_view),
-    path('products/', product_list_view),
+    # path('products/<int:id>/', product_detail_view, name='product-detail'),
+    path('products/<slug:slug>/', product_s_detail_view, name='slug-detail'),
+    path('create/', product_create_view, name='product-create' ),
+    path('products/', product_list_view, name='product-list'),
+    path('logout/', log_out),
+    path('cart/', cart_home),
+    path('call/', call_back),
+    path('checkout/', stk_push, name='check'),
+    path('search/', search_results, name='search-results'),
+    path('update/', cart_update, name='update'),
+    path('register/', register_page),
     path('about/', about_view, name='about'),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

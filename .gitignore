@@ -103,3 +103,8 @@ venv.bak/
 
 # mypy
 .mypy_cache/
+
+#Roy additions
+requirements.sublime-workspace
+.vscode
+requirements.txt

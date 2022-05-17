@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-fluid mt-3">
+	<div class="row">
+		<div class="col-md-6 theme mt-3">
+			<h2 class="pt-2 pb-2"><b>Cart</b></h2>
+			<div class="table-responsive theme"> 
+			   <table class="table table-hover"> 
+			   <!--	<caption><button class="btn btn-info" type="submit" href="">CheckOut</button></caption> -->
+			      <thead> 
+			         <tr>
+			         	<th class="col-md-1">No</th> 
+			            <th>Product</th> 
+			            <th>Price</th> 
+			         </tr> 
+			      </thead> 
+			      <tbody>
+			      	{% for product in cart.products.all %}  
+			         <tr>
+			         	<td>{{ forloop.counter }}</td>
+			            <td><a href="{{product.get_absolute_url}}">	{{ product.name }} </a></td> 
+			            <td>{{ product.price }}</td>  
+			         </tr>
+			         {% endfor %}  
+			         <tr>
+			         	<th></th>
+			            <th>Total:</th> 
+			            <th>{{ cart.total }}</th>  
+			         </tr> 
+			      </tbody> 
+			   </table>
+			   <div class="col-md-5 ml-auto">
+	   			<form method="GET" action="{% url 'check' %}">
+	   				<input type="hidden" name="at" value="{{ cart.total }}">
+					<button class="btn btn-info mb-3" type=​"submit"​>​CheckOut</button>
+				</form>
+<!-- 			   	<a class="btn btn-info" type="submit" href="{% url 'check' %}">CheckOut</a></div>  -->
+		</div>
+	</div>
+</div>
+
+
+   {% endblock %}	

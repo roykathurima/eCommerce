@@ -1,18 +1,28 @@
 
 {% extends 'base.html' %}
 
+{% load static %}
 {% block content %}
 
- {% for item in object %}
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-6 my-2">
+			 <ul class="list-group">
+			 	{% for item in object %}
+			 	<li class="list-group-item">
+			    <a href = "{{item.get_absolute_url}}" >{{ item.title }} </a> <br>
+			    {{ item.price }}
+			    <br>
+			    {{ item.description }} <br>
+				</li>
+				{% endfor %}
+			 </ul>
+		</div>
 
- <p>
-    <a href = "/detail/{{ item.id }}/" >{{ item.title }} </a> <br>
+	</div>
+</div>
 
-    {{ item.price }} <br>
 
-    {{ item.description }} <br>
-<hr>
- </p>
- {% endfor %}
+
 
  {% endblock %}
